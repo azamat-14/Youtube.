@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube — Главная</title>
+<style>
+:root{--bg:#0f0f0f;--panel:#181818;--hover:#272727;--text:#f1f1f1;--muted:#aaa;--line:#303030;--red:#ff0033}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+button,input{font:inherit}button{cursor:pointer;color:inherit;border:0}
+header{height:64px;display:flex;align-items:center;gap:24px;padding:0 22px;position:sticky;top:0;background:rgba(15,15,15,.97);z-index:5}
+.menu{font-size:23px;background:none}.logo{display:flex;align-items:center;gap:6px;font-size:21px;font-weight:bold;white-space:nowrap}.play{background:var(--red);color:white;border-radius:8px;padding:3px 7px;font-size:16px}
+.search-wrap{display:flex;max-width:650px;flex:1;margin:auto}.search-wrap input{width:100%;background:#121212;border:1px solid #333;border-radius:24px 0 0 24px;padding:12px 18px;color:white;outline:none}.search-wrap input:focus{border-color:#3b70c9}.search-btn{width:64px;background:#282828;border:1px solid #333;border-left:0;border-radius:0 24px 24px 0;font-size:18px}.mic{border-radius:50%;background:#272727;width:42px;height:42px;font-size:18px}.right{display:flex;align-items:center;gap:18px}.avatar{width:34px;height:34px;border-radius:50%;background:#2764a5;display:grid;place-items:center;font-weight:bold}
+.layout{display:flex}.sidebar{width:220px;padding:12px 12px 30px;position:fixed;top:64px;bottom:0;overflow:auto}.side-item{display:flex;align-items:center;gap:22px;padding:12px;border-radius:10px;font-size:14px}.side-item:hover,.side-item.active{background:var(--hover)}.side-item span:first-child{font-size:20px;width:22px;text-align:center}.side-sep{border-top:1px solid var(--line);margin:12px 0}.side-title{padding:10px 12px;font-weight:bold;font-size:15px}
+main{margin-left:220px;width:calc(100% - 220px);padding:10px 24px 40px}.chips{display:flex;gap:12px;overflow:auto;padding:8px 0 20px;position:sticky;top:64px;background:var(--bg);z-index:3}.chip{background:#272727;border-radius:8px;padding:9px 14px;white-space:nowrap;font-size:14px}.chip.active{background:#f1f1f1;color:#111}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px 18px}.card{min-width:0;cursor:pointer}.thumb{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#222}.thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .2s}.card:hover .thumb img{transform:scale(1.04)}.duration{position:absolute;right:8px;bottom:8px;background:#080808d9;padding:4px 6px;border-radius:4px;font-size:12px}.details{display:flex;gap:12px;padding-top:12px}.channel{width:38px;height:38px;border-radius:50%;background:#333;display:grid;place-items:center;font-weight:bold;flex-shrink:0}.info{min-width:0}.title{font-weight:600;font-size:15px;line-height:1.35;margin-bottom:7px}.meta{font-size:13px;color:var(--muted);line-height:1.5}.more{margin-left:auto;background:none;color:#aaa;font-size:20px;align-self:flex-start}.empty{text-align:center;color:var(--muted);padding:70px 10px;display:none}
+.overlay{display:none;position:fixed;inset:0;background:#000d;z-index:10;align-items:center;justify-content:center;padding:20px}.player-box{width:min(900px,100%);background:#181818;border-radius:14px;overflow:hidden}.player-top{display:flex;justify-content:space-between;align-items:center;padding:12px 16px}.player-top button{background:none;font-size:25px}.player-box iframe{width:100%;aspect-ratio:16/9;border:0;display:block}.player-caption{padding:14px 18px 20px}.player-caption h2{font-size:18px;margin:0 0 8px}.player-caption p{color:var(--muted);margin:0;font-size:14px}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sidebar{width:190px}main{margin-left:190px;width:calc(100% - 190px)}}
+@media(max-width:700px){header{gap:12px;padding:0 12px}.logo{font-size:17px}.right .mic{display:none}.sidebar{width:68px;padding:10px 6px}.side-item{justify-content:center;padding:13px 4px}.side-item span:last-child,.side-title,.side-sep{display:none}.side-item span:first-child{font-size:21px}main{margin-left:68px;width:calc(100% - 68px);padding:8px 12px}.grid{grid-template-columns:1fr;gap:25px}.search-wrap{max-width:none}.search-wrap input{min-width:0;padding:10px}.search-btn{width:48px}.right{gap:8px}}
+</style>
+</head>
+<body>
+<header>
+<button class="menu" aria-label="Меню">☰</button>
+<div class="logo"><span class="play">▶</span><span>YouTube</span></div>
+<div class="search-wrap"><input id="search" type="search" placeholder="Введите запрос"><button class="search-btn" id="searchBtn">⌕</button></div>
+<button class="mic" title="Голосовой поиск">🎙</button>
+<div class="right"><span>＋</span><span>🔔</span><div class="avatar">A</div></div>
+</header>
+<div class="layout">
+<aside class="sidebar">
+<div class="side-item active"><span>⌂</span><span>Главная</span></div>
+<div class="side-item"><span>▶</span><span>Shorts</span></div>
+<div class="side-item"><span>▣</span><span>Подписки</span></div>
+<div class="side-sep"></div>
+<div class="side-title">Вы　›</div>
+<div class="side-item"><span>◷</span><span>История</span></div>
+<div class="side-item"><span>▤</span><span>Плейлисты</span></div>
+<div class="side-item"><span>⏱</span><span>Смотреть позже</span></div>
+<div class="side-item"><span>👍</span><span>Понравившиеся</span></div>
+<div class="side-sep"></div>
+<div class="side-title">Навигатор</div>
+<div class="side-item"><span>🔥</span><span>В тренде</span></div>
+<div class="side-item"><span>🎵</span><span>Музыка</span></div>
+<div class="side-item"><span>🎮</span><span>Игры</span></div>
+<div class="side-item"><span>🏆</span><span>Спорт</span></div>
+</aside>
+<main>
+<div class="chips" id="chips">
+<button class="chip active" data-category="Все">Все</button>
+<button class="chip" data-category="Музыка">Музыка</button>
+<button class="chip" data-category="Игры">Игры</button>
+<button class="chip" data-category="Футбол">Футбол</button>
+<button class="chip" data-category="Программирование">Программирование</button>
+<button class="chip" data-category="Обучение">Обучение</button>
+<button class="chip" data-category="Развлечения">Развлечения</button>
+</div>
+<section class="grid" id="grid"></section>
+<div class="empty" id="empty">Ничего не найдено. Попробуйте другой запрос.</div>
+</main>
+</div>
+<div class="overlay" id="overlay">
+<div class="player-box">
+<div class="player-top"><strong>Сейчас воспроизводится</strong><button id="close">×</button></div>
+<iframe id="frame" src="" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div class="player-caption"><h2 id="playerTitle"></h2><p id="playerMeta"></p></div>
+</div>
+</div>
+<script>
+const videos=[
+{title:"Лучшие моменты футбола ⚽",channel:"Football World",views:"1,2 млн просмотров",age:"2 недели назад",duration:"12:48",category:"Футбол",id:"L_jWHffIx5E",img:"https://img.youtube.com/vi/L_jWHffIx5E/hqdefault.jpg",letter:"⚽"},
+{title:"Как создать свой первый сайт на HTML и CSS",channel:"Code Academy",views:"245 тыс. просмотров",age:"3 дня назад",duration:"18:32",category:"Программирование",id:"UB1O30fR-EE",img:"https://img.youtube.com/vi/UB1O30fR-EE/hqdefault.jpg",letter:"</>"},
+{title:"Brawl Stars — официальный ролик игры",channel:"Brawl Stars",views:"11 млн просмотров",age:"Недавно",duration:"3:11",category:"Игры",id:"d-NtBVjvP6Y",img:"https://img.youtube.com/vi/d-NtBVjvP6Y/hqdefault.jpg",letter:"BS"},
+{title:"Brawl Stars: первое видео от сообщества",channel:"Brawl Stars",views:"3,2 млн просмотров",age:"Ранее",duration:"Видео",category:"Игры",id:"80mTmv8EKO4",img:"https://img.youtube.com/vi/80mTmv8EKO4/hqdefault.jpg",letter:"BS"},
+{title:"Minecraft — Shape Your World",channel:"Minecraft",views:"22 млн просмотров",age:"Ранее",duration:"Видео",category:"Игры",id:"9aDWhUJdYDk",img:"https://img.youtube.com/vi/9aDWhUJdYDk/hqdefault.jpg",letter:"M"},
+{title:"Minecraft gameplay",channel:"MrBatak",views:"943 тыс. просмотров",age:"Ранее",duration:"Видео",category:"Игры",id:"s9QIYGkCqWM",img:"https://img.youtube.com/vi/s9QIYGkCqWM/hqdefault.jpg",letter:"M"},
+{title:"Спокойная музыка для учёбы и отдыха",channel:"Music Space",views:"5,4 млн просмотров",age:"1 месяц назад",duration:"1:02:15",category:"Музыка",id:"jfKfPfyJRdk",img:"https://img.youtube.com/vi/jfKfPfyJRdk/hqdefault.jpg",letter:"♪"},
+{title:"Изучаем JavaScript с нуля — основы",channel:"Web Lessons",views:"178 тыс. просмотров",age:"5 дней назад",duration:"25:19",category:"Обучение",id:"W6NZfCO5SIk",img:"https://img.youtube.com/vi/W6NZfCO5SIk/hqdefault.jpg",letter:"JS"},
+{title:"Самые красивые голы в истории футбола",channel:"Goal Time",views:"3,1 млн просмотров",age:"2 месяца назад",duration:"10:44",category:"Футбол",id:"kJQP7kiw5Fk",img:"https://img.youtube.com/vi/kJQP7kiw5Fk/hqdefault.jpg",letter:"G"},
+{title:"Полезные советы для начинающих программистов",channel:"IT Start",views:"96 тыс. просмотров",age:"6 дней назад",duration:"14:02",category:"Программирование",id:"PkZNo7MFNFg",img:"https://img.youtube.com/vi/PkZNo7MFNFg/hqdefault.jpg",letter:"IT"},
+{title:"Смешные видео — подборка недели",channel:"Fun Time",views:"720 тыс. просмотров",age:"4 дня назад",duration:"8:51",category:"Развлечения",id:"ScMzIvxBSi4",img:"https://img.youtube.com/vi/ScMzIvxBSi4/hqdefault.jpg",letter:"😂"},
+{title:"Учимся делать адаптивный дизайн сайта",channel:"Frontend Pro",views:"310 тыс. просмотров",age:"1 неделю назад",duration:"32:10",category:"Обучение",id:"yfoY53QXEnI",img:"https://img.youtube.com/vi/yfoY53QXEnI/hqdefault.jpg",letter:"CSS"}
+];
+const grid=document.getElementById("grid"),search=document.getElementById("search"),empty=document.getElementById("empty");
+let category="Все";
+function render(){
+ const q=search.value.trim().toLowerCase();
+ const list=videos.filter(v=>(category==="Все"||v.category===category)&&(`${v.title} ${v.channel} ${v.category}`).toLowerCase().includes(q));
+ grid.innerHTML=list.map((v)=>`<article class="card" data-id="${v.id}">
+ <div class="thumb"><img src="${v.img}" alt=""><span class="duration">${v.duration}</span></div>
+ <div class="details"><div class="channel">${v.letter}</div><div class="info"><div class="title">${v.title}</div><div class="meta">${v.channel}<br>${v.views} • ${v.age}</div></div><button class="more" aria-label="Дополнительно">⋮</button></div>
+ </article>`).join("");
+ empty.style.display=list.length?"none":"block";
+}
+grid.addEventListener("click",e=>{
+ const card=e.target.closest(".card");if(!card)return;
+ const v=videos.find(x=>x.id===card.dataset.id);
+ document.getElementById("playerTitle").textContent=v.title;
+ document.getElementById("playerMeta").textContent=v.channel+" • "+v.views;
+ document.getElementById("frame").src="https://www.youtube-nocookie.com/embed/"+v.id+"?autoplay=1";
+ document.getElementById("overlay").style.display="flex";
+});
+function closePlayer(){document.getElementById("overlay").style.display="none";document.getElementById("frame").src=""}
+document.getElementById("close").addEventListener("click",closePlayer);
+document.getElementById("overlay").addEventListener("click",e=>{if(e.target.id==="overlay")closePlayer()});
+search.addEventListener("input",render);document.getElementById("searchBtn").addEventListener("click",render);
+document.getElementById("chips").addEventListener("click",e=>{
+ const b=e.target.closest(".chip");if(!b)return;
+ document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));
+ b.classList.add("active");category=b.dataset.category;render();
+});
+render();
+</script>
+</body>
+</html>
