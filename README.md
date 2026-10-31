@@ -10,13 +10,13 @@
 
 ---
 
-## 👋 О канале
+## 👋 О ютубе
 
-Привет! Меня зовут Имя, и на моём канале я рассказываю про тема канала.
+Привет! Меня зовут Азамат, и на моём канале я рассказываю про тема канала.
 
 - 🎯 Тематика: программирование / игры / обзоры / влоги
 - 📅 Новые видео: каждый вторник и пятницу
-- 👥 Подписчиков: XXXX
+
 - 🌍 Язык: русский
 
 ---
@@ -25,9 +25,9 @@
 
 | Видео | Описание | Ссылка |
 |-------|----------|--------|
-| Название видео 1 | Краткое описание | [Смотреть](https://youtube.com/watch?v=VIDEO_ID_1) |
-| Название видео 2 | Краткое описание | [Смотреть](https://youtube.com/watch?v=VIDEO_ID_2) |
-| Название видео 3 | Краткое описание | [Смотреть](https://youtube.com/watch?v=VIDEO_ID_3) |
+|  видео 1 | Краткое описание | [Смотреть](https://youtube.com/watch?v=VIDEO_ID_1) |
+|  видео 2 | Краткое описание | [Смотреть](https://youtube.com/watch?v=VIDEO_ID_2) |
+|  видео 3 | Краткое описание | [Смотреть](https://youtube.com/watch?v=VIDEO_ID_3) |
 
 ---
 
@@ -43,9 +43,9 @@
 
 ## 📚 Плейлисты
 
-- 🎓 [Название плейлиста 1](https://youtube.com/playlist?list=PLAYLIST_ID_1)
-- 🛠 [Название плейлиста 2](https://youtube.com/playlist?list=PLAYLIST_ID_2)
-- 💡 [Название плейлиста 3](https://youtube.com/playlist?list=PLAYLIST_ID_3)
+- 🎓 (https://youtube.com/playlist?list=PLAYLIST_ID_1)
+- 🛠 (https://youtube.com/playlist?list=PLAYLIST_ID_2)
+- 💡 (https://youtube.com/playlist?list=PLAYLIST_ID_3)
 
 ---
 
